@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<p style="text-align: center; font-size: 30px; margin-top: 13%;">Change Username</p>
+<form action="" method="post" class="my-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" id="submit-button">Save</button>
+</form>
+<div style="text-align: center;" class="logout-links">
+    <a href="{% url 'logout' %}" class="logout-box">
+        <div class="logout-content">Logout</div>
+    </a>
+</div>
+<div style="text-align: center;" class="backhome-link">
+    <a href="{% url 'home' %}" class="backhome-box">
+        <div class="backhome-content">Back</div>
+    </a>
+</div>
+{% endblock %}

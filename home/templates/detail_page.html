@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+<!-- {%  block title %}{{ data.title }}{% endblock %} -->
+
+{% block content %}
+<div class="emphasize-page">
+    <div class="container">
+    <div id="text-container">{{ data.data|safe }}</div>
+    </div>
+</div>
+{% endblock %}

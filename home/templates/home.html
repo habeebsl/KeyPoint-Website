@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+{% load socialaccount %}
+
+{% if user.is_authenticated %}
+
+<header class="header">
+    <div class="logo">
+        <a href="{% url 'home' %}">
+        <strong style="color: #ffc107; display: inline-block;">Key</strong><div style="text-decoration: underline; color: #007bff; display: inline-block;">Point</div>
+        </a>
+    </div>
+    
+    <nav class="navigation">
+        <ul>
+            <li class="boxed-link"><a href="{% url 'emphasis' %}"><div>Create+</div></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="home-content">
+
+<div class="name"  id="text-container">
+Hello <strong class="name-color"><a href="{% url 'settings' %}">{{user.username}}</a></strong>
+</div><br>
+<!-- <a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'emphasis' %}" class="emphasizer-link">Create Emphasis</a> -->
+<div class="h3-container" style="opacity: 60%;">
+    <div class="history">
+        <svg class="history_svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#333">
+            <path d="M0 0h24v24H0V0z" fill="none"/>
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8z"/>
+        </svg>
+        History
+    </div>
+</div>
+<div class="scroll-container">
+    <div class="container">
+        {% if historical_chats %}
+            {% for data in historical_chats %}
+            <div class="square-box">
+                <a href="{% url 'detail' data.slug %}" class="box-link">
+                    <div class="box-content">{{ data.title }}</div>
+                </a>
+                <a href="{% url 'edit' data.slug %}" class="edit-link">
+                    <svg class="edit-link-svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z"/>
+                    </svg>
+                </a>
+                <a href="{% url 'delete' data.slug %}" class="delete-link">
+                    <svg class="delete-link-svg" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M16 9v10H8V9h8m-1.5-6h-5l-1 1H5v2h14V4h-3.5l-1-1zM18 7H6v12c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7z"/>
+                    </svg>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+        <div class="no-history-box">
+            <div class="no-history-box-content" style="opacity: 50%;">No data</div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+</main>
+{% else %}
+
+<header class="header">
+    <div class="logo">
+        <a href="{% url 'home' %}">
+        <strong style="color: #ffc107; display: inline-block;">Key</strong><div style="text-decoration: underline; color: #007bff; display: inline-block;">Point</div>
+        </a>
+    </div>
+    
+    <nav class="navigation">
+        <ul>
+            <li class="boxed-link"><a href="{% url 'emphasis' %}"><div>Create+</div></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="home-content">
+<div class="not-logged-in">
+    <strong>Highlighting</strong> <strong style="text-decoration: underline; color: #007bff;">What Matters</strong>
+</div>
+<div style="text-align: center;" class="auth-links">
+    <a href="{% url 'login' %}" class="auth-box">
+        <div class="auth-content">Login</div>
+    </a>
+    <a href="{% url 'account_signup' %}" class="auth-box">
+        <div class="auth-content">Signup</div>
+    </a>
+</div>
+</main>
+{% endif %}
+{% endblock %} 

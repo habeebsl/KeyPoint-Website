@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="margin-top: 13%;">Edit Title</h1>
+
+<form action="" method="post" class="my-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" id="submit-button">Save changes</button>
+</form>
+{% endblock %}
