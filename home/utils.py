@@ -1,9 +1,11 @@
-import nltk
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from collections import Counter
+import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+import json
 import re
-from nltk.tag import pos_tag
+
+load_dotenv()
+
 
 def add_paragraph_breaks(text, sentences_per_paragraph=3):
     if not text:
@@ -20,59 +22,72 @@ def add_paragraph_breaks(text, sentences_per_paragraph=3):
             current_paragraph = ''
 
     result = ''.join(paragraphs)
+
     return result
 
 
+def emphasize(question, sentences_per_paragraph=3):
+    GOOGLE_API_KEY=os.getenv("API_KEY")
 
-def wrap_consecutive_strong_tags(html):
+    genai.configure(api_key=GOOGLE_API_KEY)
+
+    prompt = f"""
+        [{question}] --- read thoroughly the block of text delimited by [], and use the ***Step-by-step Instructions*** to determine how to respond. 
+
+        ***Step by step Instructions***
+        1. Identify the subject of the block of text.
+        2. Utilize this identified subject to pinpoint especially important words or sentences within the text.
+        3. Place the important sentences found in a python list
+        4. Place important words in a seperate python list 
+        5. Construct a json object with the important sentences python list and the important words python list as the value to the dictionary
+        6. Proceed to the ***Guidelines*** before responding.
+
+        ***Guidelines***
+        1. Respond only with the json object, containing the stored important words and sentences.
+        2. Name the key containing the important sentences --- important_sentences
+        3. Name the key containing the important words --- important_words
+        4. Create another key containing the identified subject and name it --- subject
+        5. If the Python dictionary value doesn't contain any enclosed content, respond with: ***No Enclosed Content***
     """
-    Wrap consecutive <strong> tags with an <a> tag.
 
-    Args:
-        html (str): The HTML content.
+    model = genai.GenerativeModel('gemini-pro')
+    response=model.generate_content(prompt)
+    # print(response.text)
 
-    Returns:
-        str: The HTML content with wrapped consecutive <strong> tags.
-    """
-    # Define a regex pattern to match consecutive <strong> tags
-    pattern = r'(<strong>\s*.*?\s*<\/strong>\s*)+'
+    pattern = re.compile(r"\{([^{}]*)\}")
+    finder = pattern.search(response.text)
 
-    # Define a function to replace matches with the wrapped version
-    def replace_strong_tags(match):
-        strong_tags_content = re.findall(r'<strong>\s*(.*?)\s*<\/strong>', match.group(0))
-        search_query = '+'.join(strong_tags_content)
-        return f'<a href="https://www.google.com/search?q={search_query}" target="_blank">{match.group(0)}</a>'
+    json_obj = finder.group()
 
-    # Use re.sub() to apply the replacement function to the HTML
-    wrapped_html = re.sub(pattern, replace_strong_tags, html)
+    convert_json = json.loads(json_obj)
 
-    return wrapped_html
+    important_sentences = convert_json['important_sentences']
+
+    new_convert_json = question
+
+    for sent in important_sentences:
+        if new_convert_json == question:
+            new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
+        else:
+            new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
 
 
-def emphasize(block, threshold=4, sentences_per_paragraph=3):
-    if not block:
-        return ""
+    important_words = convert_json['important_words']
 
-    nltk.download('punkt')
-    nltk.download('wordnet')
-    nltk.download('stopwords')
-    nltk.download('averaged_perceptron_tagger')
+    for words in important_words:
+        split_sent=words.split(" ")
+        search_query="+".join(split_sent)
+        find_words = re.compile(r"\b" + re.escape(words) + r"\b")
+        replacement = f'<strong><a href="https://www.google.com/search?q={search_query}" target="_blank">{words}</a></strong>'
+        new_convert_json = find_words.sub(replacement, new_convert_json)
+    
 
-    stop_words = set(stopwords.words('english'))
-    tokens = word_tokenize(block.lower())
-    tagged_words = pos_tag(tokens)
-    filtered_tokens = [word for word in tokens if re.match("^[a-zA-Z0-9-]+$", word)]
+    # block_with_paragraphs = add_paragraph_breaks(new_convert_json, sentences_per_paragraph)
 
-    lemmatizer = nltk.stem.WordNetLemmatizer()
-    lemmatized_tokens = [lemmatizer.lemmatize(word) for word in filtered_tokens]
+    title = convert_json['subject']
+    final_text = new_convert_json.replace("\n", "<br>")
+    data = [final_text, title]
 
-    word_count = Counter(lemmatized_tokens)
 
-    for word, count in word_count.items():
-        if count <= threshold and word not in stop_words:
-            block = re.sub(r'\b' + re.escape(word) + r'(?=\W|$)', f"<strong>{word}</strong>", block, flags=re.IGNORECASE)
 
-    wrapped_block = wrap_consecutive_strong_tags(block)
-    block_with_paragraphs = add_paragraph_breaks(wrapped_block, sentences_per_paragraph)
-
-    return block_with_paragraphs
+    return data

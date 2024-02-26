@@ -6,18 +6,22 @@ from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
 @login_required
 def generateEmphasisView(request):
     processed = None
-    form=EmphasisDataForm(request.POST or None)
+    processed_data = None
+    form = EmphasisDataForm(request.POST or None)
+
     if request.method == 'POST' and form.is_valid():
         input=form.cleaned_data['text']
-        input_as_list = list(input)
-        processed = emphasize(input, threshold=4)
-        save_data = SavedData(title="".join(input_as_list[0:25]), data=processed, author=request.user)
+        processed = emphasize(input)
+        processed_data = processed[0]
+        save_data = SavedData(title=processed[1], data=processed[0], author=request.user)
         save_data.save()
-    return render(request, 'emphasize_text.html', {'emphasized_text':processed, 'form':form})
+
+
+    return render(request, 'emphasize_text.html', {'emphasized_text':processed_data, 'form':form})
 
 
 def homePageView(request):
@@ -32,9 +36,13 @@ def homePageView(request):
     else:
         return render(request, 'home.html')
 
+
+
 def emphasisHistoryView(request, slug):
     get_saved_data = SavedData.objects.get(slug=slug)
+
     return render(request, 'detail_page.html', {"data":get_saved_data})
+
 
 class EditTitle(UpdateView):
     template_name = 'edit_title.html'
@@ -43,19 +51,23 @@ class EditTitle(UpdateView):
     success_url = '/'
     context_object_name = 'savedata'
 
+
 def settings_page(request):
     if request.method == 'POST':
         form = ChangeUsername(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+
             return redirect('/')  # Redirect to profile page or any other page
     else:
         form = ChangeUsername(instance=request.user)
+
+
     return render(request, 'settings.html', {'form': form})
+
 
 class DeleteHighlightView(DeleteView):
     template_name = 'delete_highlight.html'
     model = SavedData
     success_url = reverse_lazy('home')
     context_object_name = 'savadata'
-
