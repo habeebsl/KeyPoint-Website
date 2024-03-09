@@ -719,6 +719,15 @@ input[type="password"]::placeholder {
     font-size: 16px;
   }
 
+  .name {
+    font-size: 42px;
+  }
+
+  .square-box {
+    width: 160px;
+    height: 160px;
+  }
+
 }
 
 @media only screen and (min-width: 375px) and (max-width: 399px) {
@@ -766,6 +775,15 @@ input[type="password"]::placeholder {
   .container {
     font-size: 16px;
   }
+
+  .name {
+    font-size: 41px;
+  }
+
+  .square-box {
+    width: 160px;
+    height: 160px;
+  }
 }
 
 @media only screen and (max-width: 374px) {
@@ -795,8 +813,7 @@ input[type="password"]::placeholder {
 
   .home-content {
     margin-top: 120px;
-    padding: 0;
-    padding-top: 20px;
+    padding: 12px;
   }
 
   .header {
@@ -817,6 +834,15 @@ input[type="password"]::placeholder {
 
   .container {
     font-size: 16px;
+  }
+
+  .name {
+    font-size: 38px;
+  }
+
+  .square-box {
+    width: 150px;
+    height: 150px;
   }
 }
 

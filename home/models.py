@@ -1,18 +1,19 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from .utils import random_slug
 
 # Create your models here.
 class SavedData(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=60, unique=True)
+    title = models.CharField(max_length=60, unique=False)
     data = models.TextField()
     slug = models.SlugField(max_length=100, unique=True, blank=True)
 
     def save(self, *args, **kwargs):
         # Update slug if title has changed or slug is not set
         if self.pk is None or self.title != SavedData.objects.get(pk=self.pk).title:
-            self.slug = slugify(self.title)
+            self.slug = slugify(str(self.title) + random_slug())
         
         super().save(*args, **kwargs)
 

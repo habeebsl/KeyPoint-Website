@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import json
 import re
+import random
 
 load_dotenv()
 
@@ -58,47 +59,63 @@ def emphasize(question):
     response=model.generate_content(prompt)
     print(response.text)
 
-    pattern = re.compile(r"\{([^{}]*)\}")
-    finder = pattern.search(response.text)
+    if not response.text == '***No Enclosed Content***':
+        pattern = re.compile(r"\{([^{}]*)\}")
+        finder = pattern.search(response.text)
 
-    json_obj = finder.group()
+        json_obj = finder.group()
 
-    convert_json = json.loads(json_obj)
-
-
-
-    important_sentences = convert_json['important_sentences']
-
-    new_convert_json = new_text
-
-    if important_sentences:
-
-        for sent in important_sentences:
-            if new_convert_json == new_text:
-                new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
-            else:
-                new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
+        convert_json = json.loads(json_obj)
 
 
-    important_words = convert_json['important_words']
 
-    if important_words:
-        for words in important_words:
-            split_sent=words.split(" ")
-            search_query="+".join(split_sent)
-            find_words = re.compile(r"\b" + re.escape(words) + r"\b", re.IGNORECASE)
-            replacement = f'<strong><a href="https://www.google.com/search?q={search_query}" target="_blank">{words}</a></strong>'
-            new_convert_json = find_words.sub(replacement, new_convert_json)
-    
+        important_sentences = convert_json['important_sentences']
 
-    # block_with_paragraphs = add_paragraph_breaks(new_convert_json, sentences_per_paragraph)
+        new_convert_json = new_text
 
-    title = convert_json['subject']
-    final_text = new_convert_json.replace("\n", "<br>")
-    data = [final_text, title]
+        if important_sentences:
 
-    print(new_convert_json)
+            for sent in important_sentences:
+                if new_convert_json == new_text:
+                    new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
+                else:
+                    new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
 
+
+        important_words = convert_json['important_words']
+
+        if important_words:
+            for words in important_words:
+                split_sent=words.split(" ")
+                search_query="+".join(split_sent)
+                find_words = re.compile(r"\b" + re.escape(words) + r"\b", re.IGNORECASE)
+                replacement = f'<strong><a href="https://www.google.com/search?q={search_query}" target="_blank">{words}</a></strong>'
+                new_convert_json = find_words.sub(replacement, new_convert_json)
+        
+
+        # block_with_paragraphs = add_paragraph_breaks(new_convert_json, sentences_per_paragraph)
+        
+        title = convert_json['subject']
+        if not title:
+            final_text = new_convert_json.replace("\n", "<br>")
+            data = [final_text, None]
+        else:
+            final_text = new_convert_json.replace("\n", "<br>")
+            data = [final_text, title]
+
+        print(new_convert_json)
+    else:
+        data = [new_text, None]
 
 
     return data
+
+def random_slug():
+    numbers_and_letters = ['a', '1', 'b', '2', 'c', '3', 'd', '4', 'e', '5', 'f', '6', 'g', '7', 'h', '8', 'i', '9', 'j', '10', 'k', '11', 'l', '12', 'm', '13', 'n', '14', 'o']
+
+    generated_slug = []
+
+    for i in range(10):
+        random_num = random.randint(0, len(numbers_and_letters) - 1)
+        generated_slug.append(str(numbers_and_letters[random_num]))
+    return "".join(generated_slug)
