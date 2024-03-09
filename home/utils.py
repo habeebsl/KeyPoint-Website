@@ -71,21 +71,24 @@ def emphasize(question):
 
     new_convert_json = new_text
 
-    for sent in important_sentences:
-        if new_convert_json == new_text:
-            new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
-        else:
-            new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
+    if important_sentences:
+
+        for sent in important_sentences:
+            if new_convert_json == new_text:
+                new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
+            else:
+                new_convert_json = new_convert_json.replace(sent, f"<strong>{sent}</strong>")
 
 
     important_words = convert_json['important_words']
 
-    for words in important_words:
-        split_sent=words.split(" ")
-        search_query="+".join(split_sent)
-        find_words = re.compile(r"\b" + re.escape(words) + r"\b", re.IGNORECASE)
-        replacement = f'<strong><a href="https://www.google.com/search?q={search_query}" target="_blank">{words}</a></strong>'
-        new_convert_json = find_words.sub(replacement, new_convert_json)
+    if important_words:
+        for words in important_words:
+            split_sent=words.split(" ")
+            search_query="+".join(split_sent)
+            find_words = re.compile(r"\b" + re.escape(words) + r"\b", re.IGNORECASE)
+            replacement = f'<strong><a href="https://www.google.com/search?q={search_query}" target="_blank">{words}</a></strong>'
+            new_convert_json = find_words.sub(replacement, new_convert_json)
     
 
     # block_with_paragraphs = add_paragraph_breaks(new_convert_json, sentences_per_paragraph)
