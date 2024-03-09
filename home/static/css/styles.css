@@ -733,7 +733,6 @@ input[type="password"]::placeholder {
 
   .detail-page-title {
     font-size: 32px;
-    margin-bottom: 0;
   }
 }
 
@@ -784,7 +783,6 @@ input[type="password"]::placeholder {
 
   .detail-page-title {
     font-size: 27px;
-    margin-bottom: 0;
   }
 
   .container {
@@ -852,7 +850,6 @@ input[type="password"]::placeholder {
 
   .detail-page-title {
     font-size: 25px;
-    margin-bottom: 0;
   }
 
   .container {
@@ -892,10 +889,6 @@ input[type="password"]::placeholder {
 
   .emphasize-page {
     padding-top: 0;
-  }
-
-  .detail-page-title {
-    margin-bottom: 0;
   }
 
   .home-content {
