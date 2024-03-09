@@ -3,7 +3,8 @@
 {% block title %}Settings{% endblock %}
 
 {% block content %}
-<p style="text-align: center; font-size: 30px; margin-top: 13%;">Change Username</p>
+
+<p class="settings-head">Change Username</p>
 <form action="" method="post" class="my-form">{% csrf_token %}
     {{ form.as_p }}
     <button type="submit" id="submit-button">Save</button>

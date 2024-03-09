@@ -308,7 +308,11 @@ width: 8px; /* Set the width of the scrollbar */
   padding: 6px;
 }
 
-
+.settings-head {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 170px;
+}
 
 
 
@@ -645,7 +649,7 @@ input[type="password"]::placeholder {
 
 @media only screen and (min-width: 400px) and (max-width: 543px) {
   .not-logged-in{
-    font-size: 25px;
+    font-size: 27px;
   }
 
   .auth-links {
@@ -740,7 +744,7 @@ input[type="password"]::placeholder {
 
 @media only screen and (max-width: 374px) {
   .not-logged-in{
-    font-size: 20px;
+    font-size: 23px;
   }
 
   .auth-links {
@@ -751,7 +755,7 @@ input[type="password"]::placeholder {
   
   .auth-box {
     background-color: #007bff;
-    width: 50px;
+    width: 60px;
     padding: 6px;
     border-radius: 4px;
     margin-left: 10px; /* Add margin between the boxes */
@@ -760,12 +764,13 @@ input[type="password"]::placeholder {
   }
 
   .auth-box .auth-content {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .home-content {
     margin-top: 120px;
-    padding: 20px;
+    padding: 0;
+    padding-top: 20px;
   }
 
   .header {

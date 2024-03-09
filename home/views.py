@@ -17,9 +17,13 @@ def generateEmphasisView(request):
         input=form.cleaned_data['text']
         processed = emphasize(input)
         processed_data = processed[0]
-        save_data = SavedData(title=processed[1], data=processed[0], author=request.user)
-        save_data.save()
 
+        if processed[1] == None or "":
+            save_data = SavedData(title="No Title", data=processed[0], author=request.user)
+            save_data.save()
+        else:
+            save_data = SavedData(title=processed[1], data=processed[0], author=request.user)
+            save_data.save()
 
     return render(request, 'emphasize_text.html', {'emphasized_text':processed_data, 'form':form})
 
