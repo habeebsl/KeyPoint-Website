@@ -647,6 +647,32 @@ input[type="password"]::placeholder {
 }
 
 
+
+.error-box {
+  text-align: center;
+  background-color: #ffe6e6; /* Light red background */
+  color: #ff3333; /* Dark red text color */
+  border: 1px solid #ff3333; /* Dark red border */
+  padding: 10px; /* Padding around the content */
+  margin: 10px 0; /* Margin to separate from other elements */
+  border-radius: 5px; /* Rounded corners */
+}
+
+#error-home-button {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  border: none; /* Remove border */
+  padding: 12px 20px; /* Add padding */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-size: 16px; /* Button font size */
+}
+
+
+#error-home-button:hover {
+  background-color: #0056b3; /* Darker blue background color on hover */
+}
+
 @media only screen and (min-width: 400px) and (max-width: 543px) {
   .not-logged-in{
     font-size: 27px;

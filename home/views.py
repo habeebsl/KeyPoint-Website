@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from .utils import emphasize
+import json
 from .forms import EmphasisDataForm, SaveDataForm, ChangeUsername
 from .models import SavedData
 from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.template.response import TemplateResponse
 
 
 @login_required
@@ -13,19 +15,23 @@ def generateEmphasisView(request):
     processed_data = None
     form = EmphasisDataForm(request.POST or None)
 
-    if request.method == 'POST' and form.is_valid():
-        input=form.cleaned_data['text']
-        processed = emphasize(input)
-        processed_data = processed[0]
+    try:
+        if request.method == 'POST' and form.is_valid():
+            input=form.cleaned_data['text']
+            processed = emphasize(input)
+            processed_data = processed[0]
 
-        if processed[1] == None or "":
-            save_data = SavedData(title="No Title", data=processed[0], author=request.user)
-            save_data.save()
-        else:
-            save_data = SavedData(title=processed[1], data=processed[0], author=request.user)
-            save_data.save()
+            if processed[1] == None or "":
+                save_data = SavedData(title="No Title", data=processed[0], author=request.user)
+                save_data.save()
+            else:
+                save_data = SavedData(title=processed[1], data=processed[0], author=request.user)
+                save_data.save()
+        return render(request, 'emphasize_text.html', {'emphasized_text':processed_data, 'form':form})
+    except (json.decoder.JSONDecodeError, ValueError):
+        return TemplateResponse(request, 'error_page.html')
 
-    return render(request, 'emphasize_text.html', {'emphasized_text':processed_data, 'form':form})
+    
 
 
 def homePageView(request):

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="error-box">
+    Oops! Something went wrong on our end.
+    <form action="{% url 'home' %}">
+        <button id="error-home-button">Return Home</button>
+    </form>
+  </div>  
+{% endblock %}
