@@ -711,10 +711,6 @@ input[type="password"]::placeholder {
     font-size: 19px;
   }
 
-  .emphasize-page {
-    padding: 60px;
-  }
-
   .container {
     font-size: 16px;
   }
@@ -728,6 +724,17 @@ input[type="password"]::placeholder {
     height: 160px;
   }
 
+  .emphasize-page {
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+    padding-top: 0;
+  }
+
+  .detail-page-title {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
 }
 
 @media only screen and (min-width: 375px) and (max-width: 399px) {
@@ -769,7 +776,15 @@ input[type="password"]::placeholder {
   }
 
   .emphasize-page {
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    padding-top: 0;
+  }
+
+  .detail-page-title {
+    font-size: 27px;
+    margin-bottom: 0;
   }
 
   .container {
@@ -829,7 +844,15 @@ input[type="password"]::placeholder {
   }
 
   .emphasize-page {
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 0;
+  }
+
+  .detail-page-title {
+    font-size: 25px;
+    margin-bottom: 0;
   }
 
   .container {
@@ -867,6 +890,14 @@ input[type="password"]::placeholder {
     text-decoration: none; /* Remove underlines from links */
   }
 
+  .emphasize-page {
+    padding-top: 0;
+  }
+
+  .detail-page-title {
+    margin-bottom: 0;
+  }
+
   .home-content {
     margin-top: 120px;
     padding: 20px;
@@ -900,10 +931,17 @@ input[type="password"]::placeholder {
   }
 
   .emphasize-page {
-    padding: 63px;
+    padding-left: 63px;
+    padding-right: 63px;
+    padding-bottom: 63px;
+    padding-top: 0;
   }
 
   .container {
     font-size: 16px;
+  }
+
+  .detail-page-title {
+    margin-bottom: 0;
   }
 }
