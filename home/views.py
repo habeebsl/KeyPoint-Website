@@ -29,6 +29,7 @@ def generateEmphasisView(request):
                 save_data.save()
         return render(request, 'emphasize_text.html', {'emphasized_text':processed_data, 'form':form})
     except (json.decoder.JSONDecodeError, ValueError):
+        print(Exception)
         return TemplateResponse(request, 'error_page.html')
 
     
