@@ -31,7 +31,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-
+5
 # Application definition
 
 INSTALLED_APPS = [
@@ -159,7 +159,7 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'home/static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'home/static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

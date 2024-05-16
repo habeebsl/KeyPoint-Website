@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-from .utils import random_slug
+from .utils import KeyPoint
 
 # Create your models here.
 class SavedData(models.Model):
@@ -13,7 +13,7 @@ class SavedData(models.Model):
     def save(self, *args, **kwargs):
         # Update slug if title has changed or slug is not set
         if self.pk is None or self.title != SavedData.objects.get(pk=self.pk).title:
-            self.slug = slugify(str(self.title) + random_slug())
+            self.slug = slugify(str(self.title) + KeyPoint.random_slug())
         
         super().save(*args, **kwargs)
 

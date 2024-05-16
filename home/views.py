@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .utils import emphasize
+from .utils import KeyPoint
 import json
 from .forms import EmphasisDataForm, SaveDataForm, ChangeUsername
 from .models import SavedData
@@ -18,7 +18,8 @@ def generateEmphasisView(request):
     try:
         if request.method == 'POST' and form.is_valid():
             input=form.cleaned_data['text']
-            processed = emphasize(input)
+            instance = KeyPoint(input)
+            processed = instance.emphasizer()
             processed_data = processed[0]
 
             if processed[1] == None or "":
