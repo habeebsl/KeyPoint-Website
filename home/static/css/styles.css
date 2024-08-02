@@ -1,6 +1,4 @@
 body, html {
-  /* overflow: hidden; */
-  /* font-family: 'Nunito', sans-serif; */
   font-family: 'Google Sans', sans-serif;
   font-size: 20px;
   line-height: 1.7;
@@ -8,26 +6,26 @@ body, html {
 }
 
 body::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
-  position: fixed; /* Position scrollbar relative to the viewport */
-  right: 1; /* Position scrollbar at the right edge */
+  width: 8px;
+  position: fixed;
+  right: 1;
 }
   
 body::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
+  width: 8px;
 }
   
 body::-webkit-scrollbar-track {
-    background: transparent; /* Make scrollbar track transparent */
+    background: transparent;
   }
   
 body::-webkit-scrollbar-thumb {
-    background-color: #888; /* Color of the scrollbar thumb */
-    border-radius: 4px; /* Rounded corners of the scrollbar thumb */
+    background-color: #888;
+    border-radius: 4px;
   }
   
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Color of the scrollbar thumb on hover */
+  background-color: #555;
 }
 
 .home-content {
@@ -63,7 +61,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .navigation ul li:not(.boxed-link) {
-  margin-right: 20px; /* Adjust margin for non-boxed links */
+  margin-right: 20px;
 }
 
 .navigation ul li a {
@@ -75,7 +73,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .boxed-link {
-  margin-right: 50px; /* Adjust margin for boxed link */
+  margin-right: 50px;
 }
 
 .boxed-link div {
@@ -96,26 +94,26 @@ h1 {
 }
 
 .home-content::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
-  position: fixed; /* Position scrollbar relative to the viewport */
-  right: 1; /* Position scrollbar at the right edge */
+  width: 8px;
+  position: fixed;
+  right: 1;
 }
   
 .home-content::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
+  width: 8px;
 }
   
 .home-content::-webkit-scrollbar-track {
-    background: transparent; /* Make scrollbar track transparent */
+    background: transparent;
   }
   
 .home-content::-webkit-scrollbar-thumb {
-    background-color: #888; /* Color of the scrollbar thumb */
-    border-radius: 4px; /* Rounded corners of the scrollbar thumb */
+    background-color: #888;
+    border-radius: 4px;
   }
   
 .home-content::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Color of the scrollbar thumb on hover */
+  background-color: #555;
 }
 
 strong {
@@ -134,10 +132,6 @@ strong {
   margin-bottom: -3.5px;
   color: #007bff;
 }
-
-/* .container {
-    padding: 40px;
-} */
 
 #text-container a {
     text-decoration: none;
@@ -159,7 +153,7 @@ form {
   
 textarea {
     width: 100%;
-    height: 100vh;/* Set height to 100% of viewport height */
+    height: 100vh;
     border: none;
     outline: none;
     resize: none;
@@ -167,32 +161,31 @@ textarea {
     font-size: 18px;
     padding: 20px;
     box-sizing: border-box;
-    margin-right: -20px; /* Adjust for potential margin */
-    /* overflow: hidden; */
+    margin-right: -20px;
 }
 
   
 textarea::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
-  position: fixed; /* Position scrollbar relative to the viewport */
-  right: 1; /* Position scrollbar at the right edge */
+  width: 8px;
+  position: fixed;
+  right: 1;
 }
 
 textarea::-webkit-scrollbar {
-  width: 8px; /* Adjust the width as needed */
+  width: 8px;
 }
 
 textarea::-webkit-scrollbar-track {
-  background: transparent; /* Make scrollbar track transparent */
+  background: transparent;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background-color: #888; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Rounded corners of the scrollbar thumb */
+  background-color: #888;
+  border-radius: 4px;
 }
 
 textarea::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Color of the scrollbar thumb on hover */
+  background-color: #555;
 }
 
   
@@ -206,38 +199,38 @@ textarea::-webkit-scrollbar-thumb:hover {
     font-family: 'Google Sans', sans-serif;
     font-size: 16px;
     padding: 10px 20px;
-    background-color: #007bff; /* Blue color, you can change it as needed */
-    color: #fff; /* White text color */
+    background-color: #007bff;
+    color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 20px; /* Adjust the value to control the curvature */
+    border-radius: 20px;
 }
   
 #emphasize-button:hover {
-  background-color: #0056b3; /* Darker blue color on hover */
+  background-color: #0056b3;
 }
 
 .scroll-container {
   overflow-x: auto;
   white-space: nowrap;
-  scrollbar-width: thin; /* For Firefox */
+  scrollbar-width: thin;
 }
 
 .scroll-container::-webkit-scrollbar {
-width: 8px; /* Set the width of the scrollbar */
+width: 8px;
 }
 
 .scroll-container::-webkit-scrollbar-track {
-  background: transparent; /* Set the background color of the track */
+  background: transparent;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background-color: #888; /* Set the color of the thumb */
-  border-radius: 4px; /* Set the border radius of the thumb */
+  background-color: #888;
+  border-radius: 4px;
 }
 
 .scroll-container::-webkit-scrollbar-thumb:hover {
-  background-color: #555; /* Set the color of the thumb on hover */
+  background-color: #555;
 }
 
 .container {
@@ -253,11 +246,11 @@ width: 8px; /* Set the width of the scrollbar */
   margin-right: 20px;
   border-radius: 10px;
   padding: 10px;
-  transition: background-color 0.3s; /* Smooth transition */
+  transition: background-color 0.3s;
 }
 
 .square-box:hover {
-  background-color: #0056b3; /* Darker blue color on hover */
+  background-color: #0056b3;
 }
 
 .box-link {
@@ -271,9 +264,9 @@ width: 8px; /* Set the width of the scrollbar */
   color: #fff;
   font-size: 16px;
   padding: 10px;
-  overflow: hidden; /* Hide any content that overflows the box */
-  text-overflow: ellipsis; /* Display an ellipsis (...) to indicate overflow */
-  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .edit-link {
@@ -294,12 +287,12 @@ width: 8px; /* Set the width of the scrollbar */
   bottom: 10px;
   left: 18px;
   color: #fff;
-  opacity: 0; /* Initially hide the edit link */
-  transition: opacity 0.3s; /* Smooth transition for opacity */
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .container:hover .delete-link {
-  opacity: 1; /* Show the edit link on hover */
+  opacity: 1;
 }
 .delete-link-svg {
   background-color: rgba(255, 255, 255, 0.925);
@@ -329,61 +322,61 @@ width: 8px; /* Set the width of the scrollbar */
 /* form-styling */
 
 .my-form {
-  max-width: 400px; /* Set maximum width of the form */
-  margin: 0 auto; /* Center the form horizontally */
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
     height: 42px;
-    width: 100%; /* Make text inputs fill the width of their container */
-    padding: 10px; /* Add padding */
-    margin-bottom: 20px; /* Add spacing below inputs */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Add rounded corners */
-    background-color: #f2f2f2; /* Background color */
-    color: #555; /* Text color */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: #555;
+    box-sizing: border-box;
     font-size: 18px;
 }
 
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="password"]::placeholder {
-    color: #999; /* Placeholder color */
+    color: #999;
 }
 
 #submit-button {
-  background-color: #007bff; /* Blue background color */
-  color: #fff; /* White text color */
-  border: none; /* Remove border */
-  padding: 12px 20px; /* Add padding */
-  border-radius: 5px; /* Add rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  font-size: 16px; /* Button font size */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
   width: 100%;
 }
 
 
 #submit-button:hover {
-  background-color: #0056b3; /* Darker blue background color on hover */
+  background-color: #0056b3;
 }
 
 
 #delete-submit-button {
-  background-color: red; /* Blue background color */
-  color: #fff; /* White text color */
-  border: none; /* Remove border */
-  padding: 12px 20px; /* Add padding */
-  border-radius: 5px; /* Add rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  font-size: 16px; /* Button font size */
+  background-color: red;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 
 #delete-submit-button:hover {
-  background-color: darkred; /* Darker blue background color on hover */
+  background-color: darkred;
 }
 
 .no-history-box {
@@ -391,13 +384,13 @@ input[type="password"]::placeholder {
   width: 180px;
   height: 180px;
   background-color: #f4f4f4;
-  display: flex; /* Use flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 20px;
   border-radius: 10px;
   padding: 10px;
-  transition: background-color 0.3s; /* Smooth transition */
+  transition: background-color 0.3s;
 }
 
 .no-history-box-content {
@@ -407,7 +400,7 @@ input[type="password"]::placeholder {
 }
 
 .help-text {
-  font-size: 12px; /* Adjust the font size as needed */
+  font-size: 12px;
 }
 
 .emphasize-page {
@@ -429,9 +422,9 @@ input[type="password"]::placeholder {
   width: 100px;
   padding: 8px;
   border-radius: 4px;
-  margin-left: 10px; /* Add margin between the boxes */
+  margin-left: 10px;
   size: 50px;
-  text-decoration: none; /* Remove underlines from links */
+  text-decoration: none;
 }
 
 .auth-box:hover {
@@ -446,15 +439,11 @@ input[type="password"]::placeholder {
 }
 
 .auth-box:hover .auth-content {
-  color: #fff; /* Change text color on hover */
+  color: #fff;
 }
 
 
 .gsi-material-button {
-  /* -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  -webkit-appearance: none; */
   background-color: WHITE;
   background-image: none;
   border: 1px solid #747775;
@@ -480,8 +469,7 @@ input[type="password"]::placeholder {
   width: auto;
   max-width: 400px;
   min-width: min-content;
-  margin: 0 auto; /* Center align */
-  /* margin-top: 50px; */
+  margin: 0 auto;
 }
 
 .gsi-material-button .gsi-material-button-icon {
@@ -559,7 +547,7 @@ input[type="password"]::placeholder {
 /* Divider styles */
 .or-divider {
   text-align: center;
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px;
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 20px;
@@ -567,10 +555,10 @@ input[type="password"]::placeholder {
 
 .divider-line {
   display: inline-block;
-  width: 50px; /* Adjust length of the divider */
-  border-top: 2px solid #ccc; /* Divider color */
-  margin: 0 5px; /* Adjust spacing */
-  vertical-align: middle; /* Align vertically with the text */
+  width: 50px;
+  border-top: 2px solid #ccc;
+  margin: 0 5px;
+  vertical-align: middle;
 }
 
 .or-divider span {
@@ -592,9 +580,9 @@ input[type="password"]::placeholder {
   width: 100px;
   padding: 8px;
   border-radius: 4px;
-  margin-left: 10px; /* Add margin between the boxes */
+  margin-left: 10px;
   size: 50px;
-  text-decoration: none; /* Remove underlines from links */
+  text-decoration: none;
 }
 
 .logout-box:hover {
@@ -609,7 +597,7 @@ input[type="password"]::placeholder {
 }
 
 .logout-box:hover .logout-content {
-  color: #fff; /* Change text color on hover */
+  color: #fff;
 }
 
 
@@ -626,9 +614,9 @@ input[type="password"]::placeholder {
   width: 100px;
   padding: 8px;
   border-radius: 4px;
-  margin-left: 10px; /* Add margin between the boxes */
+  margin-left: 10px;
   size: 50px;
-  text-decoration: none; /* Remove underlines from links */
+  text-decoration: none;
 }
 
 .backhome-box:hover {
@@ -643,34 +631,34 @@ input[type="password"]::placeholder {
 }
 
 .backhome-box:hover .backhome-content {
-  color: #fff; /* Change text color on hover */
+  color: #fff;
 }
 
 
 
 .error-box {
   text-align: center;
-  background-color: #ffe6e6; /* Light red background */
-  color: #ff3333; /* Dark red text color */
-  border: 1px solid #ff3333; /* Dark red border */
-  padding: 10px; /* Padding around the content */
-  margin: 10px 0; /* Margin to separate from other elements */
-  border-radius: 5px; /* Rounded corners */
+  background-color: #ffe6e6;
+  color: #ff3333;
+  border: 1px solid #ff3333;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
 }
 
 #error-home-button {
-  background-color: #007bff; /* Blue background color */
-  color: #fff; /* White text color */
-  border: none; /* Remove border */
-  padding: 12px 20px; /* Add padding */
-  border-radius: 5px; /* Add rounded corners */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  font-size: 16px; /* Button font size */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 
 #error-home-button:hover {
-  background-color: #0056b3; /* Darker blue background color on hover */
+  background-color: #0056b3;
 }
 
 @media only screen and (min-width: 400px) and (max-width: 543px) {
@@ -689,9 +677,9 @@ input[type="password"]::placeholder {
     width: 70px;
     padding: 6px;
     border-radius: 4px;
-    margin-left: 10px; /* Add margin between the boxes */
+    margin-left: 10px;
     size: 50px;
-    text-decoration: none; /* Remove underlines from links */
+    text-decoration: none;
   }
 
   .home-content {
@@ -752,9 +740,9 @@ input[type="password"]::placeholder {
     width: 70px;
     padding: 6px;
     border-radius: 4px;
-    margin-left: 10px; /* Add margin between the boxes */
+    margin-left: 10px;
     size: 50px;
-    text-decoration: none; /* Remove underlines from links */
+    text-decoration: none;
   }
 
   .home-content {
@@ -815,9 +803,9 @@ input[type="password"]::placeholder {
     width: 60px;
     padding: 6px;
     border-radius: 4px;
-    margin-left: 10px; /* Add margin between the boxes */
+    margin-left: 10px;
     size: 50px;
-    text-decoration: none; /* Remove underlines from links */
+    text-decoration: none;
   }
 
   .auth-box .auth-content {
@@ -882,9 +870,9 @@ input[type="password"]::placeholder {
     width: 70px;
     padding: 6px;
     border-radius: 4px;
-    margin-left: 10px; /* Add margin between the boxes */
+    margin-left: 10px;
     size: 50px;
-    text-decoration: none; /* Remove underlines from links */
+    text-decoration: none;
   }
 
   .emphasize-page {
@@ -913,9 +901,9 @@ input[type="password"]::placeholder {
     width: 70px;
     padding: 6px;
     border-radius: 4px;
-    margin-left: 10px; /* Add margin between the boxes */
+    margin-left: 10px;
     size: 50px;
-    text-decoration: none; /* Remove underlines from links */
+    text-decoration: none;
   }
 
   .home-content {

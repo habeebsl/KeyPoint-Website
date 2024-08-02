@@ -1,9 +1,10 @@
-import google.generativeai as genai
-from dotenv import load_dotenv
 import os
 import json
 import re
 import random
+
+import google.generativeai as genai
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -34,11 +35,14 @@ class KeyPoint:
         json_obj = finder.group()
         convert_json = json.loads(json_obj)
         return convert_json
+    
+    def configure_gemini(self, api_key):
+        genai.configure(api_key=api_key)
+        return genai.GenerativeModel('gemini-pro')
 
     def restructure_text(self):
-        genai.configure(api_key=self.restructure_key)
-        model = genai.GenerativeModel('gemini-pro')
-        response=model.generate_content(self.__restructuring_prompt())
+        model = self.configure_gemini(api_key=self.restructure_key)
+        response=model.generate_content(self.__generate_restructuring_prompt())
         converted_json = self.retrieve_json(response)
         return converted_json
     
@@ -62,31 +66,27 @@ class KeyPoint:
 
     def __package_highlight_data(self):
         title = self.converted_json['subject']
+        final_text = self.bold_data.replace("/n/n", "<p>").replace("/n", "<br>")
         if not title:
-            final_text = self.bold_data.replace("/n/n", "<p>").replace("/n", "<br>")
             highlight_data = [final_text, None]
         else:
-            final_text = self.bold_data.replace("/n/n", "<p>").replace("/n", "<br>")
             highlight_data = [final_text, title]
         return highlight_data
 
     def emphasizer(self):
         text = self.restructure_text()
-        new_t = text['modified_text']
-        self.modified_text = new_t.replace("**", "")
-        genai.configure(api_key=self.gemini_key)
-        
-        model = genai.GenerativeModel('gemini-pro')
-        response=model.generate_content(self.__highlighting_prompt())
+        self.modified_text = text['modified_text'].replace("**", "")
+        model = self.configure_gemini(api_key=self.gemini_key)
+        response=model.generate_content(self.__generate_highlighting_prompt())
         if not response.text == "No Enclosed Content":
             self.__highlight_important_words_and_sents(response)
             data = self.__package_highlight_data()
         else:
             data = [self.modified_text, None]
-            
+
         return data
 
-    def __highlighting_prompt(self):
+    def __generate_highlighting_prompt(self):
         prompt = f"""
         [{self.modified_text}] --- read thoroughly the block of text delimited by [], and use the ***Step-by-step Instructions*** to determine how to respond.
 
@@ -117,7 +117,7 @@ class KeyPoint:
         """
         return prompt
     
-    def __restructuring_prompt(self):
+    def __generate_restructuring_prompt(self):
         prompt = f"""
         [{self.question}] --- read through the block of text which is delimited by [] and perform the following actions:
         1. Remove all newlines from the block of text
@@ -130,5 +130,3 @@ class KeyPoint:
         2. Return the modified text as a JSON object, with the key --- "modified_text".
         """
         return prompt
-
-
